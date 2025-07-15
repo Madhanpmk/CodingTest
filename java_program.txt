@@ -1,0 +1,114 @@
+------------------------CALCULATOR IN JAVA------------------------------
+
+class Calculator {
+    double a, b;
+    String operation;
+
+    Calculator(double a, double b, String operation) {
+        this.a = a;
+        this.b = b;
+        this.operation = operation.toLowerCase(); // i am using  case-insensitive input
+    }
+
+    double calculate() {
+        switch (operation) {
+            case "add":
+                return a + b;
+            case "subtract":
+                return a - b;
+            case "multiply":
+                return a * b;
+            case "divide":
+                if (b != 0) return a / b;
+                else {
+                    System.out.println("Error: Division by zero!");
+                    return Double.NaN;
+                }
+            default:
+                System.out.println("Invalid operation type.");
+                return Double.NaN;
+        }
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        Calculator calc = new Calculator(10.0, 5.0, "divide");
+        System.out.println("Result: " + calc.calculate());
+    }
+}
+
+---------------------------------------------------------------------------------------------
+
+-----------------------------ODD SERIES-----------------------------------------
+
+
+import java.util.Scanner;
+
+public class OddSeries {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        System.out.print("Enter value of a: ");
+        int a = sc.nextInt();
+
+        int count = 0, num = 1;
+        while (count < a) {
+            System.out.print(num + " ");
+            num += 2;
+            count++;
+        }
+    }
+}
+
+--------------------------------------------------------------------------------
+
+-----------------------ODD SERIES GENERATOR-------------------------------------
+
+import java.util.Scanner;
+
+public class OddSeriesGenerator {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        System.out.print("Enter value of a: ");
+        int a = sc.nextInt();
+
+        int limit = (a % 2 == 0) ? a - 1 : a;
+        int num = 1;
+
+        for (int i = 0; i < limit; i++) {
+            System.out.print(num + " ");
+            num += 2;
+        }
+    }
+}
+
+--------------------------------------------------------------------------------
+
+------------------------------MULTIPLE COUNTER----------------------------------
+
+
+import java.util.*;
+
+public class MultipleCounter {
+    public static void main(String[] args) {
+        int[] input = {1, 2, 8, 9, 12, 46, 76, 82, 15, 20, 30};
+        Map<Integer, Integer> multiplesCount = new HashMap<>();
+
+        // i am  Initialize the  map with keys start 1 to 9
+        for (int i = 1; i <= 9; i++) {
+            multiplesCount.put(i, 0);
+        }
+
+        for (int num : input) {
+            for (int i = 1; i <= 9; i++) {
+                if (num % i == 0) {
+                    multiplesCount.put(i, multiplesCount.get(i) + 1);
+                }
+            }
+        }
+
+        System.out.println("Multiples count: " + multiplesCount);
+    }
+}
+
+--------------------------------------------------------------
